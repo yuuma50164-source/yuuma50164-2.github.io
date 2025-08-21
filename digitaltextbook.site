@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>デジタル教科書リンク集</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fc;
+      color: #333;
+    }
+    header {
+      background: #3367d6;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    h2 {
+      border-left: 6px solid #3367d6;
+      padding-left: 10px;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+    }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .link-btn {
+      display: block;
+      padding: 1rem;
+      background: #4285f4;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: center;
+      transition: background 0.3s, transform 0.1s;
+    }
+    .link-btn:hover {
+      background: #2c60c8;
+      transform: translateY(-2px);
+    }
+    footer {
+      margin-top: 3rem;
+      background: #f1f1f1;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>デジタル教科書リンク集</h1>
+    <p>各教科のデジタル教材や関連サイトへアクセスできます</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>国語</h2>
+      <div class="button-grid">
+        <a href="https://example.com/japanese1" class="link-btn">国語 教科書 1</a>
+        <a href="https://example.com/japanese2" class="link-btn">国語 教科書 2</a>
+        <a href="https://example.com/japanese3" class="link-btn">漢字ドリル</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>数学</h2>
+      <div class="button-grid">
+        <a href="https://example.com/math1" class="link-btn">数学 教科書 1</a>
+        <a href="https://example.com/math2" class="link-btn">数学 教科書 2</a>
+        <a href="https://example.com/math3" class="link-btn">計算ドリル</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>英語</h2>
+      <div class="button-grid">
+        <a href="https://example.com/english1" class="link-btn">英語 教科書 1</a>
+        <a href="https://example.com/english2" class="link-btn">英語 教科書 2</a>
+        <a href="https://example.com/english3" class="link-btn">リスニング教材</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>理科</h2>
+      <div class="button-grid">
+        <a href="https://example.com/science1" class="link-btn">理科 教科書 1</a>
+        <a href="https://example.com/science2" class="link-btn">理科 教科書 2</a>
+        <a href="https://example.com/science3" class="link-btn">実験動画</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>社会</h2>
+      <div class="button-grid">
+        <a href="https://example.com/social1" class="link-btn">社会 教科書 1</a>
+        <a href="https://example.com/social2" class="link-btn">社会 教科書 2</a>
+        <a href="https://example.com/social3" class="link-btn">地図資料</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 デジタル教科書リンク集</p>
+  </footer>
+</body>
+</html>
