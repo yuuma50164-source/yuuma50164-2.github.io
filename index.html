@@ -7,88 +7,93 @@
   <meta name="description" content="小学校向けのデジタル教科書・学習サイトのリンク集" />
   <style>
     :root{
-      --radius: 12px;
-      --shadow: 0 6px 16px rgba(0,0,0,.08);
+      --radius: 14px;
+      --shadow: 0 6px 18px rgba(0,0,0,.08);
       --bg: #f7f9fc;
       --text: #233142;
-      --link: #3367d6;
     }
-    /* Reset-ish */
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Helvetica Neue", Arial, sans-serif;
       color:var(--text);
       background:var(--bg);
-      line-height:1.65;
+      line-height:1.7;
     }
 
     /* Header */
     header{
       background: linear-gradient(135deg,#3367d6,#5b86ff);
       color:#fff;
-      padding: 2.6rem 1rem 2rem;
+      padding: 28px 16px 26px;
       text-align:center;
-      position: relative;
     }
     header h1{
-      margin:0 0 .4rem;
+      margin:0 0 6px;
       font-size: clamp(1.6rem, 2.8vw, 2.4rem);
       letter-spacing:.02em;
     }
     header p{
-      margin:.2rem 0 0;
+      margin:0;
       opacity:.95;
+      font-size:1.02rem;
     }
 
     /* Quick nav */
     .toc{
-      max-width: 1040px;
-      margin: -30px auto 24px;
-      padding: .6rem;
+      max-width: 1080px;
+      margin: 18px auto 28px;
+      padding: 0 16px;
+      position: relative;
+      z-index: 0; /* 背面 */
     }
     .toc-inner{
       background:#fff;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: .6rem;
+      padding: 10px;
       display:flex;
       flex-wrap:wrap;
-      gap:.5rem;
+      gap:.5rem .6rem;
       justify-content:center;
     }
     .toc a{
       text-decoration:none;
       background:#eef3ff;
       color:#2547a8;
-      padding:.5rem .8rem;
+      padding:.55rem .85rem;
       border-radius: 999px;
-      font-weight:600;
+      font-weight:700;
       font-size:.95rem;
       border:1px solid #e0e7ff;
-      transition: all .15s ease;
+      transition: transform .12s ease, background .15s ease;
     }
     .toc a:hover{ transform: translateY(-1px); background:#e5edff; }
 
     /* Main */
     main{
-      max-width: 1040px;
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 0 16px 56px;
+      padding: 0 16px 72px;
+      position: relative;
+      z-index: 1; /* 前面（ボタンを確実にクリック可能に） */
     }
     section{
-      margin: 28px 0 24px;
+      margin: 28px 0 26px;
       background:#fff;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 18px 18px 22px;
+      padding: 18px 18px 24px;
+      position: relative;
+      z-index: 1; /* 前面 */
     }
     .sec-title{
-      margin:0 0 12px;
+      margin:0 0 14px;
       display:flex;
       align-items:center;
       gap:.6rem;
-      font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+      font-size: clamp(1.15rem, 2.2vw, 1.35rem);
       font-weight:800;
       letter-spacing:.01em;
     }
@@ -101,105 +106,57 @@
     /* Buttons grid */
     .button-grid{
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin-top: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px 18px; /* ゆったり */
+      margin-top: 12px;
     }
     .link-btn{
       display:flex; align-items:center; justify-content:center;
-      padding: 14px 14px;
+      padding: 16px;
       color:#fff;
       text-decoration:none;
-      border-radius: 10px;
-      font-weight: 700;
+      border-radius: 12px;
+      font-weight: 800;
       letter-spacing:.02em;
       transition: transform .06s ease, filter .2s ease, box-shadow .2s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,.08);
-      min-height: 52px;
+      box-shadow: 0 6px 16px rgba(0,0,0,.10);
+      min-height: 64px; /* 大きめ */
       text-align:center;
+      font-size: 1.07rem;
+      cursor: pointer;
+      position: relative;
+      z-index: 5;          /* 最前面に */
+      pointer-events: auto;/* クリックを必ず拾う */
     }
     .link-btn:hover{ transform: translateY(-2px); filter: brightness(1.03); }
-    .link-btn:active{ transform: translateY(0); filter: brightness(.98); }
+    .link-btn:active{ transform: translateY(0); filter: brightness(.97); }
 
     /* Footer */
     footer{
       text-align:center;
       color:#667;
       font-size:.92rem;
-      padding: 18px 12px 36px;
+      padding: 18px 12px 40px;
     }
 
-    /* Back to top */
-    .to-top{
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      background:#1f2a44;
-      color:#fff;
-      text-decoration:none;
-      border-radius: 999px;
-      padding: 10px 12px;
-      font-weight:700;
-      font-size:.9rem;
-      box-shadow: 0 6px 16px rgba(0,0,0,.18);
-      opacity:.9;
-    }
-    .to-top:hover{ opacity:1; }
+    /* 科目ごとの色（見出し＆ボタン色） */
+    #kokugo .sec-title{ color:#c62828; } .kokugo-dot{ background:#e53935; }
+    #shosha .sec-title{ color:#6a1b9a; } .shosha-dot{ background:#8e24aa; }
+    #sansu  .sec-title{ color:#1565c0; } .sansu-dot { background:#1e88e5; }
+    #rika   .sec-title{ color:#ef6c00; } .rika-dot  { background:#fb8c00; }
+    #shakai .sec-title{ color:#6d4c41; } .shakai-dot{ background:#8d6e63; }
+    #zuga   .sec-title{ color:#2e7d32; } .zuga-dot  { background:#43a047; }
+    #ongaku .sec-title{ color:#0288d1; } .ongaku-dot{ background:#29b6f6; }
+    #dotoku .sec-title{ color:#2e4631; } .dotoku-dot{ background:#388e3c; }
+    #gaikokugo .sec-title{ color:#1a237e; } .gaikokugo-dot{ background:#3949ab; }
+    #chizucho .sec-title{ color:#37474f; } .chizucho-dot{ background:#546e7a; }
+    #seikatsuka .sec-title{ color:#2e7d32; } .seikatsuka-dot{ background:#66bb6a; }
+    #kateika .sec-title{ color:#ad1457; } .kateika-dot{ background:#d81b60; }
 
-    /* Subject colors (heading text & button background) */
-    /* 国語 */
-    #kokugo .sec-title{ color:#c62828; }
-    #kokugo .color-dot{ background:#e53935; }
-    #kokugo .link-btn{ background:#e53935; }
-    /* 書写 */
-    #shosha .sec-title{ color:#6a1b9a; }
-    #shosha .color-dot{ background:#8e24aa; }
-    #shosha .link-btn{ background:#8e24aa; }
-    /* 算数 */
-    #sansu .sec-title{ color:#1565c0; }
-    #sansu .color-dot{ background:#1e88e5; }
-    #sansu .link-btn{ background:#1e88e5; }
-    /* 理科 */
-    #rika .sec-title{ color:#ef6c00; }
-    #rika .color-dot{ background:#fb8c00; }
-    #rika .link-btn{ background:#fb8c00; }
-    /* 社会 */
-    #shakai .sec-title{ color:#6d4c41; }
-    #shakai .color-dot{ background:#8d6e63; }
-    #shakai .link-btn{ background:#8d6e63; }
-    /* 図画工作 */
-    #zuga .sec-title{ color:#2e7d32; }
-    #zuga .color-dot{ background:#43a047; }
-    #zuga .link-btn{ background:#43a047; }
-    /* 音楽 */
-    #ongaku .sec-title{ color:#0288d1; }
-    #ongaku .color-dot{ background:#29b6f6; }
-    #ongaku .link-btn{ background:#29b6f6; }
-    /* 道徳 */
-    #dotoku .sec-title{ color:#2e4631; }
-    #dotoku .color-dot{ background:#388e3c; }
-    #dotoku .link-btn{ background:#388e3c; }
-    /* 外国語（5・6年） */
-    #gaikokugo .sec-title{ color:#1a237e; }
-    #gaikokugo .color-dot{ background:#3949ab; }
-    #gaikokugo .link-btn{ background:#3949ab; }
-    /* 地図帳 */
-    #chizucho .sec-title{ color:#37474f; }
-    #chizucho .color-dot{ background:#546e7a; }
-    #chizucho .link-btn{ background:#546e7a; }
-    /* 生活科（上） */
-    #seikatsuka .sec-title{ color:#2e7d32; }
-    #seikatsuka .color-dot{ background:#66bb6a; }
-    #seikatsuka .link-btn{ background:#66bb6a; }
-    /* 家庭科 */
-    #kateika .sec-title{ color:#ad1457; }
-    #kateika .color-dot{ background:#d81b60; }
-    #kateika .link-btn{ background:#d81b60; }
-
-    /* Small tweak for very small screens */
-    @media (max-width:380px){
-      .toc a{ font-size:.88rem; padding:.45rem .7rem; }
-      .link-btn{ font-size:.96rem; }
+    /* 小画面調整 */
+    @media (max-width:420px){
+      .link-btn{ font-size:1.02rem; min-height: 60px; }
+      .button-grid{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -209,7 +166,7 @@
     <p>各教科のデジタル教材・学習サイトへワンタップでアクセス</p>
   </header>
 
-  <!-- Quick navigation -->
+  <!-- 科目ショートカット -->
   <nav class="toc" aria-label="科目ショートカット">
     <div class="toc-inner">
       <a href="#kokugo">国語</a>
@@ -227,4 +184,106 @@
     </div>
   </nav>
 
-  <
+  <main>
+    <!-- 国語 -->
+    <section id="kokugo">
+      <h2 class="sec-title"><span class="color-dot kokugo-dot"></span>国語</h2>
+      <div class="button-grid">
+        <a class="link-btn" href="https://manaviewer.jp/" style="background:#e53935">国語 教科書</a>
+      </div>
+    </section>
+
+    <!-- 書写 -->
+    <section id="shosha">
+      <h2 class="sec-title"><span class="color-dot shosha-dot"></span>書写</h2>
+      <div class="button-grid">
+        <a class="link-btn" href="https://d-support.kyoiku-shuppan.co.jp/dk/r6e/teacher.php" style="background:#8e24aa">書写 教科書</a>
+      </div>
+    </section>
+
+    <!-- 算数 -->
+    <section id="sansu">
+      <h2 class="sec-title"><span class="color-dot sansu-dot"></span>算数</h2>
+      <div class="button-grid">
+        <a class="link-btn" href="https://p01.cloud.cho-textbook.jp/" style="background:#1e88e5">算数 教科書</a>
+      </div>
+    </section>
+
+    <!-- 理科 -->
+    <section id="rika">
+      <h2 class="sec-title"><span class="color-dot rika-dot"></span>理科</h2>
+      <div class="button-grid">
+        <a class="link-btn" href="https://p01.cloud.cho-textbook.jp/" style="background:#fb8c00">理科 教科書</a>
+      </div>
+    </section>
+
+    <!-- 社会 -->
+    <section id="shakai">
+      <h2 class="sec-title"><span class="color-dot shakai-dot"></span>社会</h2>
+      <div class="button-grid">
+        <a class="link-btn" href="https://mirai-pf.jp/user/login.html" style="background:#8d6e63">社会 教科書</a>
+      </div>
+    </section>
+
+    <!-- 図画工作 -->
+    <section id="zuga">
+      <h2 class="sec-title"><span class="color-dot zuga-dot"></span>図画工作</h2>
+      <div class="button-grid">
+        <a class="link-btn" href="https://mirai-pf.jp/user/login.html" style="background:#43a047">図画工作 教科書</a>
+      </div>
+    </section>
+
+    <!-- 音楽 -->
+    <section id="ongaku">
+      <h2 class="sec-title"><span class="color-dot ongaku-dot"></span>音楽</h2>
+      <div class="button-grid">
+        <a class="link-btn" href="https://manaviewer.jp/" style="background:#29b6f6">音楽 教科書</a>
+      </div>
+    </section>
+
+    <!-- 道徳 -->
+    <section id="dotoku">
+      <h2 class="sec-title"><span class="color-dot dotoku-dot"></span>道徳</h2>
+      <div class="button-grid">
+        <a class="link-btn" href="https://manaviewer.jp/" style="background:#388e3c">道徳 教科書</a>
+      </div>
+    </section>
+
+    <!-- 外国語（5・6年） -->
+    <section id="gaikokugo">
+      <h2 class="sec-title"><span class="color-dot gaikokugo-dot"></span>外国語（5年・6年）</h2>
+      <div class="button-grid">
+        <a class="link-btn" href="https://www.lentrance.com/schools/26027/login" style="background:#3949ab">外国語 教科書（5・6年）</a>
+      </div>
+    </section>
+
+    <!-- 地図帳 -->
+    <section id="chizucho">
+      <h2 class="sec-title"><span class="color-dot chizucho-dot"></span>地図帳</h2>
+      <div class="button-grid">
+        <a class="link-btn" href="https://p01.cloud.cho-textbook.jp/" style="background:#546e7a">地図帳</a>
+      </div>
+    </section>
+
+    <!-- 生活科（上） -->
+    <section id="seikatsuka">
+      <h2 class="sec-title"><span class="color-dot seikatsuka-dot"></span>生活科（上）</h2>
+      <div class="button-grid">
+        <a class="link-btn" href="https://www.lentrance.com/schools/26027/login" style="background:#66bb6a">生活科（上） 教科書</a>
+      </div>
+    </section>
+
+    <!-- 家庭科 -->
+    <section id="kateika">
+      <h2 class="sec-title"><span class="color-dot kateika-dot"></span>家庭科</h2>
+      <div class="button-grid">
+        <a class="link-btn" href="https://www.lentrance.com/schools/26027/login" style="background:#d81b60">家庭科 教科書</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 デジタル教科書リンク集</p>
+  </footer>
+</body>
+</html>
